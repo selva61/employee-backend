@@ -2,6 +2,8 @@ package com.sentinel.hrms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class HrmsApplication {
@@ -10,4 +12,8 @@ public class HrmsApplication {
 		SpringApplication.run(HrmsApplication.class, args);
 	}
 
+	@Bean
+	BCryptPasswordEncoder bCryptPasswordEncoder(){
+		return new BCryptPasswordEncoder();
+	}
 }

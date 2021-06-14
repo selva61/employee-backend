@@ -1,9 +1,10 @@
 package com.sentinel.hrms.controller;
 /*
-
+Author - Selva
  */
 import com.sentinel.hrms.model.Employee;
 import com.sentinel.hrms.service.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +15,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
+@AllArgsConstructor
 public class EmployeeController {
     private final EmployeeService employeeService;
-
-    @Autowired
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
 
     @GetMapping("/all")
     public ResponseEntity<List<Employee>> getAllEmployees(){
