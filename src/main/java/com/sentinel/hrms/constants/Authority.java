@@ -1,4 +1,4 @@
-package com.sentinel.hrms.util;
+package com.sentinel.hrms.constants;
 
 public class Authority {
     public static final String[] USER_AUTHORITIES = { "user:read" };

@@ -12,11 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Date;
 
-import static com.sentinel.hrms.util.SecurityConstant.ACCESS_DENIED_MESSAGE;
-import static com.sentinel.hrms.util.SecurityConstant.FORBIDDEN_MESSAGE;
-import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static com.sentinel.hrms.constants.SecurityConstant.ACCESS_DENIED_MESSAGE;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 

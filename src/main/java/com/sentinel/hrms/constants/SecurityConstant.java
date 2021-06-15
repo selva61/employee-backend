@@ -1,4 +1,4 @@
-package com.sentinel.hrms.util;
+package com.sentinel.hrms.constants;
 
 public class SecurityConstant {
 

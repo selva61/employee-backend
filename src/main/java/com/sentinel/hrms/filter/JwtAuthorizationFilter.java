@@ -1,10 +1,7 @@
 package com.sentinel.hrms.filter;
 
 import com.sentinel.hrms.util.JWTTokenProvider;
-import com.sentinel.hrms.util.SecurityConstant;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static com.sentinel.hrms.util.SecurityConstant.*;
+import static com.sentinel.hrms.constants.SecurityConstant.*;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.OK;
 

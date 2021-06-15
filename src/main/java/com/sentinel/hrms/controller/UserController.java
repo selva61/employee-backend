@@ -15,7 +15,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
-import static com.sentinel.hrms.util.SecurityConstant.JWT_TOKEN_HEADER;
+import static com.sentinel.hrms.constants.SecurityConstant.JWT_TOKEN_HEADER;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController

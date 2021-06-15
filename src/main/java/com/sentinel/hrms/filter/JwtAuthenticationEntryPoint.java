@@ -2,7 +2,7 @@ package com.sentinel.hrms.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sentinel.hrms.model.HttpResponse;
-import static com.sentinel.hrms.util.SecurityConstant.*;
+import static com.sentinel.hrms.constants.SecurityConstant.*;
 import lombok.extern.slf4j.Slf4j;
 import static org.springframework.http.HttpStatus.*;
 import org.springframework.security.core.AuthenticationException;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Date;
 
 import static org.springframework.util.MimeTypeUtils.*;
 

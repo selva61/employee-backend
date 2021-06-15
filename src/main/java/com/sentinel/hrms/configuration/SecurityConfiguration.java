@@ -3,7 +3,7 @@ package com.sentinel.hrms.configuration;
 import com.sentinel.hrms.filter.JwtAccessDeniedFilter;
 import com.sentinel.hrms.filter.JwtAuthenticationEntryPoint;
 import com.sentinel.hrms.filter.JwtAuthorizationFilter;
-import com.sentinel.hrms.util.SecurityConstant;
+import com.sentinel.hrms.constants.SecurityConstant;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

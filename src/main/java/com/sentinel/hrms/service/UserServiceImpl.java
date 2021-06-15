@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.transaction.Transactional;
@@ -23,7 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
-import static com.sentinel.hrms.util.UserConstant.*;
+import static com.sentinel.hrms.constants.UserConstant.*;
 import static com.sentinel.hrms.enumeration.Role.*;
 
 @Service
@@ -117,6 +118,31 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
+    }
+
+    @Override
+    public User addNewUser(String firstName, String lastName, String userName, String email, String role, boolean isNotLocked, boolean isActive, MultipartFile profileImage) {
+        return null;
+    }
+
+    @Override
+    public User updateUser(String currentUserName, String newFirstName, String newLastName, String newUserName, String newEmail, String role, boolean isNotLocked, boolean isActive, MultipartFile profileImage) {
+        return null;
+    }
+
+    @Override
+    public void deleteUser(long id) {
+
+    }
+
+    @Override
+    public void resetPassword(String userName, String newPassword) {
+
+    }
+
+    @Override
+    public User updateProfilePicture(String userName, MultipartFile newProfileImage) {
+        return null;
     }
 
 

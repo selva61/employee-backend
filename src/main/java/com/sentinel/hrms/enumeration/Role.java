@@ -1,5 +1,5 @@
 package com.sentinel.hrms.enumeration;
-import static com.sentinel.hrms.util.Authority.*;
+import static com.sentinel.hrms.constants.Authority.*;
 
 
 public enum Role {

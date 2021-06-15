@@ -17,12 +17,11 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
-import static com.sentinel.hrms.util.SecurityConstant.*;
+import static com.sentinel.hrms.constants.SecurityConstant.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;

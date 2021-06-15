@@ -1,4 +1,4 @@
-package com.sentinel.hrms.util;
+package com.sentinel.hrms.constants;
 
 public class UserConstant {
     public static final String USERNAME_ALREADY_EXISTS = "Username already exists";
