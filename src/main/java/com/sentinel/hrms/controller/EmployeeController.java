@@ -2,6 +2,7 @@ package com.sentinel.hrms.controller;
 /*
 Author - Selva
  */
+import com.sentinel.hrms.exception.UserNotFoundException;
 import com.sentinel.hrms.model.Employee;
 import com.sentinel.hrms.service.EmployeeService;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") Long id) throws UserNotFoundException {
         Employee employee = employeeService.findEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }

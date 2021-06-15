@@ -31,7 +31,7 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public Employee findEmployeeById(Long id){
+    public Employee findEmployeeById(Long id) throws UserNotFoundException {
         return employeeRepository.findEmployeeById(id)
                 .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }

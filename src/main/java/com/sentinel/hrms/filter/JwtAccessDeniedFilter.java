@@ -27,7 +27,7 @@ public class JwtAccessDeniedFilter implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
         log.debug("AccessDeniedHandler filter  called. Rejecting access");
-        HttpResponse httpResponse = new HttpResponse(new Date(),UNAUTHORIZED.value(),UNAUTHORIZED,
+        HttpResponse httpResponse = new HttpResponse(UNAUTHORIZED.value(),UNAUTHORIZED,
                 UNAUTHORIZED.getReasonPhrase().toUpperCase(), ACCESS_DENIED_MESSAGE);
         response.setContentType(APPLICATION_JSON_VALUE);
         response.setStatus(UNAUTHORIZED.value());

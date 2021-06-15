@@ -25,7 +25,7 @@ public class JwtAuthenticationEntryPoint  extends Http403ForbiddenEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException arg2) throws IOException {
         log.debug("Pre-authenticated entry point called. Rejecting access");
-        HttpResponse httpResponse = new HttpResponse(new Date(),FORBIDDEN.value(),FORBIDDEN,
+        HttpResponse httpResponse = new HttpResponse(FORBIDDEN.value(),FORBIDDEN,
                 FORBIDDEN.getReasonPhrase().toUpperCase(), FORBIDDEN_MESSAGE);
         response.setContentType(APPLICATION_JSON_VALUE);
         response.setStatus(FORBIDDEN.value());

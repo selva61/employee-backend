@@ -20,7 +20,7 @@ public class HttpResponse{
     public HttpResponse() {
     }
 
-    public HttpResponse(Date timeStamp, int httpStatusCode, HttpStatus httpStatus, String reason, String message) {
+    public HttpResponse(int httpStatusCode, HttpStatus httpStatus, String reason, String message) {
         this.timeStamp = new Date();
         this.httpStatusCode = httpStatusCode;
         this.httpStatus = httpStatus;
