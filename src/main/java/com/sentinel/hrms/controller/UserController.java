@@ -110,11 +110,13 @@ public class UserController  extends ExceptionHandling {
         return response(OK,USER_PASSWORD_RESET_SUCCESS + userName);
     }*/
 
-    @GetMapping("/resetpassword/{newPassword}")
-    public ResponseEntity<HttpResponse> resetPassword(@RequestBody User user, @PathVariable("newPassword") String newPassword) {
-        authenticate(user.getUserName(), user.getPassword());
-        userService.resetPassword(user.getUserName(),newPassword);
-        return response(OK,USER_PASSWORD_RESET_SUCCESS + user.getUserName());
+    @PostMapping("/resetpassword")
+    public ResponseEntity<HttpResponse> resetPassword(@RequestParam("username") String userName,
+                                                      @RequestParam("oldPassword") String oldPassword,
+                                                      @RequestParam("newPassword") String newPassword) {
+        authenticate(userName, oldPassword);
+        userService.resetPassword(userName,newPassword);
+        return response(OK,USER_PASSWORD_RESET_SUCCESS + userName);
     }
 
     @DeleteMapping("/delete/{id}")
