@@ -6,6 +6,7 @@ import com.sentinel.hrms.exception.UserNotFoundException;
 import com.sentinel.hrms.model.User;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
@@ -18,14 +19,14 @@ public interface UserService {
 
     User findUserByEmail(String email);
 
-    User addNewUser(String firstName, String lastName, String userName, String email, String role, boolean isNotLocked, boolean isActive, MultipartFile profileImage);
+    User addNewUser(String firstName, String lastName, String userName, String password, String email, String role, boolean isNotLocked, boolean isActive, MultipartFile profileImage) throws UserNotFoundException, UserNameExistException, EmailExistException, IOException;
 
-    User updateUser(String currentUserName, String newFirstName, String newLastName, String newUserName, String newEmail, String role, boolean isNotLocked, boolean isActive, MultipartFile profileImage);
+    User updateUser(String currentUserName, String newFirstName, String newLastName, String newUserName, String newEmail, String role, boolean isNotLocked, boolean isActive, MultipartFile profileImage) throws UserNotFoundException, UserNameExistException, EmailExistException, IOException;
 
     void deleteUser(long id);
 
-    void resetPassword(String userName,String newPassword);
+    void resetPassword(String userName, String newPassword);
 
-    User updateProfilePicture(String userName,MultipartFile newProfileImage);
+    User updateProfilePicture(String userName,MultipartFile newProfileImage) throws UserNotFoundException, UserNameExistException, EmailExistException, IOException;
 
 }
