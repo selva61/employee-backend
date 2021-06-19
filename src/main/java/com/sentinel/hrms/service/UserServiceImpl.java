@@ -41,12 +41,14 @@ import static com.sentinel.hrms.enumeration.Role.*;
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     private UserRepository userRepository;
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    private LoginAttemptService loginAttemptService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, LoginAttemptService loginAttemptService) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.loginAttemptService = loginAttemptService;
     }
 
     @Override
@@ -57,6 +59,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             log.error(NO_USER_FOUND_BY_USERNAME +username);
             throw new UsernameNotFoundException(NO_USER_FOUND_BY_USERNAME+ username);
         }else{
+            validateLoginAttempt(user);
             user.setLastLoginDateDisplay(user.getLastLoginDate());
             user.setLastLoginDate(new Date());
             userRepository.save(user);
@@ -65,6 +68,19 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             return userPrincipal;
         }
     }
+
+    private void validateLoginAttempt(User user){
+        if(user.isNotLocked()){
+            if(loginAttemptService.hasExceededMaxAttmepts(user.getUserName())){
+                user.setNotLocked(false);
+            }else {
+                user.setNotLocked(true);
+            }
+        }else{
+            loginAttemptService.evictUserFromLoginAttemptCache(user.getUserName());
+        }
+    }
+
     @Override
     public User findUserByUserName(String username) {
         return userRepository.findUserByUserName(username);

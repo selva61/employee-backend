@@ -6,5 +6,5 @@ public class UserConstant {
     public static final String NO_USER_FOUND_BY_USERNAME = "No user found by username: ";
     public static final String FOUND_USER_BY_USERNAME = "Returning found user by username: ";
     public static final String USER_PASSWORD_RESET_SUCCESS = "Password reset successful for User: ";
-    public static final String USER_DELETE_SUCCESS = "User deleted sucessfully";
+    public static final String USER_DELETE_SUCCESS = "User deleted successfully";
 }
