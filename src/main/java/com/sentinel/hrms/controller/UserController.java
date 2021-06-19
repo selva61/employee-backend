@@ -110,7 +110,7 @@ public class UserController  extends ExceptionHandling {
         return response(OK,USER_PASSWORD_RESET_SUCCESS + userName);
     }*/
 
-    @PostMapping("/resetpassword")
+    @PostMapping("/reset-password")
     public ResponseEntity<HttpResponse> resetPassword(@RequestParam("username") String userName,
                                                       @RequestParam("oldPassword") String oldPassword,
                                                       @RequestParam("newPassword") String newPassword) {
@@ -121,7 +121,7 @@ public class UserController  extends ExceptionHandling {
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAnyAuthority('user:delete')")
-    public ResponseEntity<HttpResponse> deleteUser(@PathVariable("id") long id){
+    public ResponseEntity<HttpResponse> deleteUser(@PathVariable("id") long id) {
         userService.deleteUser(id);
         return response(OK, USER_DELETE_SUCCESS);
     }

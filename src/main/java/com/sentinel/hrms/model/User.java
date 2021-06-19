@@ -24,7 +24,6 @@ public class User implements Serializable {
     private Date lastLoginDate;
     private Date lastLoginDateDisplay;
     private Date joinDate;
-    @Transient
     private String role;//ROLE_USER{read,edit},ROLE_ADMIN{create,edit,delete},ROLE_HR{create,edit,delete}
     private String[] authorities;//read,delete,create,edit
     private boolean isActive;
