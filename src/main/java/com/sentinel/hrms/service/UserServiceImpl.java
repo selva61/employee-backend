@@ -137,8 +137,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userRepository.findAll();
     }
 
-
-
     @Override
     public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
@@ -218,8 +216,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 Files.createDirectories(userFolder);
                 log.info(DIRECTORY_CREATED + userFolder);
             }
-            Files.delete(Paths.get(userFolder + user.getUserName() + DOT + JPG_EXTENSION));
-            Files.copy(profileImage.getInputStream(), userFolder.resolve(userFolder + user.getUserName() + DOT + JPG_EXTENSION), REPLACE_EXISTING);
+            Files.delete(Paths.get(userFolder + FORWARD_SLASH + user.getUserName() + DOT + JPG_EXTENSION));
+            Files.copy(profileImage.getInputStream(), userFolder.resolve(userFolder + FORWARD_SLASH + user.getUserName() + DOT + JPG_EXTENSION), REPLACE_EXISTING);
             user.setProfileImgUrl(setProfileImageUrl(user.getUserName()));
             userRepository.save(user);
             log.info(FILE_SAVED_IN_FILE_SYSTEM + profileImage.getOriginalFilename());
@@ -227,8 +225,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     private String setProfileImageUrl(String userName) {
-        return ServletUriComponentsBuilder.fromCurrentContextPath().path(USER_IMAGE_PATH + userName + FORWARD_SLASH
-                + userName + DOT + JPG_EXTENSION).toUriString();
+        return ServletUriComponentsBuilder.fromCurrentContextPath().path(USER_IMAGE_PATH + userName + FORWARD_SLASH + userName + DOT + JPG_EXTENSION).toUriString();
     }
 
     private Role getRoleEnumName(String role) {

@@ -1,7 +1,6 @@
 package com.sentinel.hrms.filter;
 
 import com.sentinel.hrms.util.JWTTokenProvider;
-import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,10 +19,13 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.OK;
 
 @Component
-@AllArgsConstructor
 public class JwtAuthorizationFilter  extends OncePerRequestFilter {
 
     private JWTTokenProvider jwtTokenProvider;
+
+    public JwtAuthorizationFilter(JWTTokenProvider jwtTokenProvider) {
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
@@ -37,7 +39,7 @@ public class JwtAuthorizationFilter  extends OncePerRequestFilter {
             }
             String token = authorizationHeader.substring(TOKEN_PREFIX.length());
             String username = jwtTokenProvider.getSubject(token);
-            if(jwtTokenProvider.isTokenValid(username,token) && SecurityContextHolder.getContext() == null){
+            if(jwtTokenProvider.isTokenValid(username,token) && SecurityContextHolder.getContext().getAuthentication() == null){
                 List<GrantedAuthority> authorities = jwtTokenProvider.getAuthorities(token);
                 Authentication authentication = jwtTokenProvider.getAuthentication(username,authorities,httpServletRequest);
                 SecurityContextHolder.getContext().setAuthentication(authentication);

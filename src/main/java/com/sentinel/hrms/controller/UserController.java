@@ -64,6 +64,7 @@ public class UserController  extends ExceptionHandling {
     }
 
     @PostMapping("/add")
+    @PreAuthorize("hasAnyAuthority('user:create')")
     public ResponseEntity<User> addNewUser(@RequestParam("firstName") String firstName,
                                            @RequestParam("lastName") String lastName,
                                            @RequestParam("username") String userName,
@@ -78,6 +79,7 @@ public class UserController  extends ExceptionHandling {
     }
 
     @PostMapping("/update")
+    @PreAuthorize("hasAnyAuthority('user:update')")
     public ResponseEntity<User> updateUser(@RequestParam("currentUserName") String currentUserName,
                                            @RequestParam("firstName") String firstName,
                                            @RequestParam("lastName") String lastName,
@@ -92,12 +94,14 @@ public class UserController  extends ExceptionHandling {
     }
 
     @GetMapping("/find/{username}")
+    @PreAuthorize("hasAnyAuthority('user:read')")
     public ResponseEntity<User> findUser(@PathVariable("username") String username){
         User user = userService.findUserByUserName(username);
         return new ResponseEntity<>(user, OK);
     }
 
     @GetMapping("/list")
+    @PreAuthorize("hasAnyAuthority('user:read')")
     public ResponseEntity<List<User>> getAllUsers(){
         List<User> users = userService.getUsers();
         return new ResponseEntity<>(users, OK);

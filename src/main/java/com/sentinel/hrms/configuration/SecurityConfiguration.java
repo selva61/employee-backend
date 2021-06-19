@@ -4,6 +4,7 @@ import com.sentinel.hrms.filter.JwtAccessDeniedFilter;
 import com.sentinel.hrms.filter.JwtAuthenticationEntryPoint;
 import com.sentinel.hrms.filter.JwtAuthorizationFilter;
 import com.sentinel.hrms.constants.SecurityConstant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
     public SecurityConfiguration(JwtAuthorizationFilter jwtAuthorizationFilter,
                                  JwtAccessDeniedFilter jwtAccessDeniedFilter,
                                  JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint,

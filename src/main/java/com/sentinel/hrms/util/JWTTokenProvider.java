@@ -82,7 +82,7 @@ public class JWTTokenProvider {
         try{
             Algorithm algorithm = HMAC512(secret);
             verifier = JWT.require(algorithm).withIssuer(SENTINEL_LLC).build();
-        }catch (JWTVerificationException execption){
+        }catch (JWTVerificationException exception){
             throw new JWTVerificationException(TOKEN_CANNOT_BE_VERIFIED);
         }
         return verifier;
